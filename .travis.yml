@@ -3,7 +3,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t ahmedfarouk1414/react -f Dockerfile.dev .
+  - docker build -t ahmedfarouk1414/react -f ./Dockerfile.dev .
 
 script:
-  - docker run ahmedfarouk1414/react:latest  npm run test -- --coverage
+  #- docker run ahmedfarouk1414/react:latest  npm run test -- --coverage
+  - docker run -e CI=true ahmedfarouk1414/react:latest npm run test -- --coverage
